@@ -13,6 +13,7 @@ import Card from "@material-ui/core/Card";
 import TextField from "@material-ui/core/TextField";
 
 //Custom
+import Progress from "./Progress.component";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,6 +76,7 @@ const Home = () => {
   }, []);
 
   const handleSubmit = (e) => {
+    setIsLoading(true);
     e.preventDefault();
     axios({
       url: `http://localhost:5000/news/everything/q/${search}`,
@@ -96,6 +98,7 @@ const Home = () => {
 
   return (
     <div>
+      {isLoading && <Progress />}
       <h1 className={classes.center}>
         <a
           style={{
@@ -122,7 +125,6 @@ const Home = () => {
           onChange={handleChange}
         />
       </form>
-      {isLoading && <p>Loading News</p>}
       <List>
         {news.map((e, index) => (
           <div key={index}>
