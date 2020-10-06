@@ -96,7 +96,17 @@ const Home = () => {
 
   return (
     <div>
-      <h1 className={classes.center}>News API</h1>
+      <h1 className={classes.center}>
+        <a
+          style={{
+            color: "#777777",
+            textDecoration: "none",
+          }}
+          href="http://localhost:3000"
+        >
+          News API
+        </a>
+      </h1>
       <form
         onSubmit={handleSubmit}
         className={classes.root}
